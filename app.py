@@ -40,6 +40,16 @@ def auth_page():
 def home_page():
     st.title("Home Page")
     st.write(f"Welcome, {st.session_state.user}")
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background-color: #d0f0fd;  /* light blue, change to any color */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
     if st.button("Log out"):
         st.session_state.user = None
