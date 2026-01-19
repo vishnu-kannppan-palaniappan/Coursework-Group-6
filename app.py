@@ -29,7 +29,7 @@ def auth_page():
             else:
                 st.error("Invalid login")
 
-        else:  # Sign Up
+        else:
             if username in users:
                 st.error("User already exists")
             else:
@@ -44,8 +44,6 @@ def home_page():
     if st.button("Log out"):
         st.session_state.user = None
         st.session_state.page = "auth"
-        st.rerun()
-
 
 if st.session_state.page == "auth":
     auth_page()
