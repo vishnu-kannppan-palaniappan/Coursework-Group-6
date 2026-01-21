@@ -1,31 +1,35 @@
 import streamlit as st
+import json
+import os
 
-if "users" not in st.session_state:
-    st.session_state.users = {}
+USERS_FILE = "users.json"
 
-if "page" not in st.session_state:
-    st.session_state.page = "auth"
+def load_users():
+    if not os.path.exists(USERS_FILE):
+        return {}
+    with open(USERS_FILE, "r") as f:
+        return json.load(f)
+
+def save_users(users):
+    with open(USERS_FILE, "w") as f:
+        json.dump(users, f)
 
 if "user" not in st.session_state:
     st.session_state.user = None
-
 
 def auth_page():
     st.title("Sign In / Sign Up")
 
     mode = st.radio("Mode", ["Sign In", "Sign Up"])
-
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
 
     if st.button(mode):
-        users = st.session_state.users
+        users = load_users()
 
         if mode == "Sign In":
             if username in users and users[username] == password:
                 st.session_state.user = username
-                st.session_state.page = "home"
-                st.rerun()
             else:
                 st.error("Invalid login")
 
@@ -34,28 +38,17 @@ def auth_page():
                 st.error("User already exists")
             else:
                 users[username] = password
-                st.success("Account created. Now sign in.")
-
+                save_users(users)
+                st.success("Account created. Sign in now.")
 
 def home_page():
-    st.title("Home Page")
+    st.title("Home")
     st.write(f"Welcome, {st.session_state.user}")
-    st.markdown(
-        """
-        <style>
-        .stApp {
-            background-color: #d0f0fd;  /* light blue, change to any color */
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
     if st.button("Log out"):
         st.session_state.user = None
-        st.session_state.page = "auth"
 
-if st.session_state.page == "auth":
+if st.session_state.user is None:
     auth_page()
 else:
     home_page()
