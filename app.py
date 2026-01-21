@@ -16,6 +16,8 @@ def save_users(users):
 
 if "user" not in st.session_state:
     st.session_state.user = None
+if "login_success" not in st.session_state:
+    st.session_state.login_success = False
 
 def auth_page():
     st.title("Sign In / Sign Up")
@@ -31,7 +33,7 @@ def auth_page():
             if mode == "Sign In":
                 if username in users and users[username] == password:
                     st.session_state.user = username
-                    st.experimental_rerun()
+                    st.session_state.login_success = True
                 else:
                     st.error("Invalid login")
             else:
@@ -41,6 +43,10 @@ def auth_page():
                     users[username] = password
                     save_users(users)
                     st.success("Account created. Sign in now.")
+
+    if st.session_state.login_success:
+        st.session_state.login_success = False
+        st.experimental_rerun()
 
 def home_page():
     st.title("Home")
@@ -54,3 +60,4 @@ if st.session_state.user is None:
     auth_page()
 else:
     home_page()
+
