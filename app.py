@@ -19,27 +19,28 @@ if "user" not in st.session_state:
 
 def auth_page():
     st.title("Sign In / Sign Up")
-
     mode = st.radio("Mode", ["Sign In", "Sign Up"])
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
 
-    if st.button(mode):
-        users = load_users()
+    with st.form(key="auth_form"):
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+        submit = st.form_submit_button(mode)
 
-        if mode == "Sign In":
-            if username in users and users[username] == password:
-                st.session_state.user = username
+        if submit:
+            users = load_users()
+            if mode == "Sign In":
+                if username in users and users[username] == password:
+                    st.session_state.user = username
+                    st.experimental_rerun()
+                else:
+                    st.error("Invalid login")
             else:
-                st.error("Invalid login")
-
-        else:
-            if username in users:
-                st.error("User already exists")
-            else:
-                users[username] = password
-                save_users(users)
-                st.success("Account created. Sign in now.")
+                if username in users:
+                    st.error("User already exists")
+                else:
+                    users[username] = password
+                    save_users(users)
+                    st.success("Account created. Sign in now.")
 
 def home_page():
     st.title("Home")
@@ -47,6 +48,7 @@ def home_page():
 
     if st.button("Log out"):
         st.session_state.user = None
+        st.experimental_rerun()
 
 if st.session_state.user is None:
     auth_page()
