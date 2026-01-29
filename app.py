@@ -50,13 +50,12 @@ def home_page():
 
 def feature1_page():
     st.title("support schemem things")
-
-st.markdown("""
+    st.markdown("""
 ### Objective
 The *Silver Support Scheme (SSS)* aims to provide financial support to *elderly Singapore citizens* who have lower lifetime incomes and limited family support.
 """)
 
-st.markdown("""
+    st.markdown("""
 ---
 
 ### Basic Eligibility Criteria
@@ -66,7 +65,7 @@ An individual must:
 - Satisfy all other prescribed eligibility criteria
 """)
 
-st.markdown("""
+    st.markdown("""
 ---
 
 ### Clarifications for Attaining 65 Years of Age
@@ -76,7 +75,7 @@ st.markdown("""
 - If the *month of birth cannot be ascertained, it is deemed to be **January*
 """)
 
-st.markdown("""
+    st.markdown("""
 ---
 
 ### Monetary Eligibility Requirements
@@ -91,7 +90,7 @@ st.markdown("""
 - *Monthly household income per person* must not exceed *SGD 2,300*
 """)
 
-st.markdown("""
+    st.markdown("""
 ---
 
 ### Benefits (Annual Payout)
@@ -112,7 +111,7 @@ st.markdown("""
 - Income > $1,500 and ≤ $2,300 → *$215*
 """)
 
-st.markdown("""
+    st.markdown("""
 ---
 \* Seniors must *not own* the 5-room flat.
 """)
