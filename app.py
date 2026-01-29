@@ -23,7 +23,7 @@ def auth_page():
     st.title("Sign In / Sign Up")
     mode = st.radio("Mode", ["Sign In", "Sign Up"])
 
-    with st.form(key="auth_form"):
+    with st.form("auth_form"):
         username = st.text_input("Username")
         password = st.text_input("Password", type="password")
         submit = st.form_submit_button(mode)
@@ -48,10 +48,6 @@ def home_page():
     st.title("Home")
     st.write(f"Welcome, {st.session_state.user}")
 
-    if st.button("Log out"):
-        st.session_state.user = None
-        st.session_state.page = "auth"
-
 def feature1_page():
     st.title("Feature 1")
     st.write("This is feature 1")
@@ -60,24 +56,27 @@ def feature2_page():
     st.title("Feature 2")
     st.write("This is feature 2")
 
-def feature3_page():
-    st.title("Feature 3")
-    st.write("This is feature 3")
+def helpdesk_page():
+    st.title("Helpdesk")
+    st.write("This is the helpdesk")
 
 if st.session_state.user:
-    page = st.sidebar.selectbox(
-        "Navigation",
-        ["Home", "Feature 1", "Feature 2", "Feature 3"]
-    )
+    with st.sidebar:
+        st.title("Navigation")
 
-    if page == "Home":
-        st.session_state.page = "home"
-    elif page == "Feature 1":
-        st.session_state.page = "feature1"
-    elif page == "Feature 2":
-        st.session_state.page = "feature2"
-    elif page == "Feature 3":
-        st.session_state.page = "feature3"
+        if st.button("Home"):
+            st.session_state.page = "home"
+        if st.button("Feature 1"):
+            st.session_state.page = "feature1"
+        if st.button("Feature 2"):
+            st.session_state.page = "feature2"
+        if st.button("Helpdesk"):
+            st.session_state.page = "helpdesk"
+
+        st.divider()
+        if st.button("Log out"):
+            st.session_state.user = None
+            st.session_state.page = "auth"
 
 if st.session_state.user is None:
     auth_page()
@@ -88,5 +87,5 @@ else:
         feature1_page()
     elif st.session_state.page == "feature2":
         feature2_page()
-    elif st.session_state.page == "feature3":
-        feature3_page()
+    elif st.session_state.page == "helpdesk":
+        helpdesk_page()
