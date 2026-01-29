@@ -48,15 +48,6 @@ def home_page():
     st.title("Home")
     st.write(f"Welcome, {st.session_state.user}")
 
-    # home buttons to go to features
-    col1, col2, col3 = st.columns(3)
-    if col1.button("Feature 1"):
-        st.session_state.page = "feature1"
-    if col2.button("Feature 2"):
-        st.session_state.page = "feature2"
-    if col3.button("Feature 3"):
-        st.session_state.page = "feature3"
-
     if st.button("Log out"):
         st.session_state.user = None
         st.session_state.page = "auth"
@@ -64,23 +55,21 @@ def home_page():
 def feature1_page():
     st.title("Feature 1")
     st.write("This is feature 1")
-    if st.button("Back to Home"):
-        st.session_state.page = "home"
 
 def feature2_page():
     st.title("Feature 2")
     st.write("This is feature 2")
-    if st.button("Back to Home"):
-        st.session_state.page = "home"
 
 def feature3_page():
     st.title("Feature 3")
     st.write("This is feature 3")
-    if st.button("Back to Home"):
-        st.session_state.page = "home"
 
 if st.session_state.user:
-    page = st.sidebar.selectbox("Navigation", ["Home", "Feature 1", "Feature 2", "Feature 3"])
+    page = st.sidebar.selectbox(
+        "Navigation",
+        ["Home", "Feature 1", "Feature 2", "Feature 3"]
+    )
+
     if page == "Home":
         st.session_state.page = "home"
     elif page == "Feature 1":
