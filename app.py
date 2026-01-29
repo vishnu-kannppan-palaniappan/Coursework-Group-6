@@ -49,13 +49,16 @@ def home_page():
     st.write(f"Welcome, {st.session_state.user}")
 
 def feature1_page():
-    st.title("support schemem things")
-    st.markdown("""
+    st.title("schemem things")
+    col1, col2, col3 = st.columns([1, 1, 1])
+
+    col1 = st.write("Silver Support Scheme (SSS)")
+
+    col1 = st.write("""
+
 ### Objective
 The *Silver Support Scheme (SSS)* aims to provide financial support to *elderly Singapore citizens* who have lower lifetime incomes and limited family support.
-""")
 
-    st.markdown("""
 ---
 
 ### Basic Eligibility Criteria
@@ -63,9 +66,7 @@ An individual must:
 - Be a *Singapore Citizen*
 - Have *attained 65 years of age*
 - Satisfy all other prescribed eligibility criteria
-""")
 
-    st.markdown("""
 ---
 
 ### Clarifications for Attaining 65 Years of Age
@@ -73,9 +74,7 @@ An individual must:
 - If born on *29 February, the 65th anniversary is deemed to occur on **1 March*
 - If the *day of birth cannot be ascertained, it is deemed to be the **1st day of that month*
 - If the *month of birth cannot be ascertained, it is deemed to be **January*
-""")
 
-    st.markdown("""
 ---
 
 ### Monetary Eligibility Requirements
@@ -88,9 +87,7 @@ An individual must:
   - *Any private property*
   - *Multiple properties*
 - *Monthly household income per person* must not exceed *SGD 2,300*
-""")
 
-    st.markdown("""
 ---
 
 ### Benefits (Annual Payout)
@@ -109,11 +106,10 @@ An individual must:
 #### Living in 5-room HDB flats* (not owned by the senior)
 - Income ≤ $1,500 → *$430*
 - Income > $1,500 and ≤ $2,300 → *$215*
-""")
 
-    st.markdown("""
 ---
 \* Seniors must *not own* the 5-room flat.
+
 """)
 
 def feature2_page():
