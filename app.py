@@ -49,8 +49,73 @@ def home_page():
     st.write(f"Welcome, {st.session_state.user}")
 
 def feature1_page():
-    st.title("Feature 1")
-    st.write("This is feature 1")
+    st.title("support schemem things")
+
+st.markdown("""
+### Objective
+The *Silver Support Scheme (SSS)* aims to provide financial support to *elderly Singapore citizens* who have lower lifetime incomes and limited family support.
+""")
+
+st.markdown("""
+---
+
+### Basic Eligibility Criteria
+An individual must:
+- Be a *Singapore Citizen*
+- Have *attained 65 years of age*
+- Satisfy all other prescribed eligibility criteria
+""")
+
+st.markdown("""
+---
+
+### Clarifications for Attaining 65 Years of Age
+- An individual attains *65 years of age on the 65th anniversary* of their birth date
+- If born on *29 February, the 65th anniversary is deemed to occur on **1 March*
+- If the *day of birth cannot be ascertained, it is deemed to be the **1st day of that month*
+- If the *month of birth cannot be ascertained, it is deemed to be **January*
+""")
+
+st.markdown("""
+---
+
+### Monetary Eligibility Requirements
+- *CPF Contributions* by age 55 must not exceed *SGD 140,000*
+- *Self-employed / platform workers*:
+  - Average annual net trade income (ages 45–54) must not exceed *SGD 27,600*
+- Must live in a *1- to 5-room HDB flat*
+- Neither the individual nor their spouse should own:
+  - A *5-room or larger HDB flat*
+  - *Any private property*
+  - *Multiple properties*
+- *Monthly household income per person* must not exceed *SGD 2,300*
+""")
+
+st.markdown("""
+---
+
+### Benefits (Annual Payout)
+#### Living in 1- and 2-room HDB flats
+- Income ≤ $1,500 → *$1,080*
+- Income > $1,500 and ≤ $2,300 → *$540*
+
+#### Living in 3-room HDB flats
+- Income ≤ $1,500 → *$860*
+- Income > $1,500 and ≤ $2,300 → *$430*
+
+#### Living in 4-room HDB flats
+- Income ≤ $1,500 → *$650*
+- Income > $1,500 and ≤ $2,300 → *$325*
+
+#### Living in 5-room HDB flats* (not owned by the senior)
+- Income ≤ $1,500 → *$430*
+- Income > $1,500 and ≤ $2,300 → *$215*
+""")
+
+st.markdown("""
+---
+\* Seniors must *not own* the 5-room flat.
+""")
 
 def feature2_page():
     st.title("Feature 2")
