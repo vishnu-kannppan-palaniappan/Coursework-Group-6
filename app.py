@@ -52,18 +52,29 @@ def home_page():
 
 
 def feature1_page():
-    st.title("Support Schemes Overview")
+st.title("Support Schemes Overview")
 
-    folder = "schemes"
-    txt_files = sorted([f for f in os.listdir(folder) if f.endswith(".txt")])
+# Folder containing all your txt files
+folder = "schemes"
 
+# Grab all txt files
+txt_files = sorted([f for f in os.listdir(folder) if f.endswith(".txt")])
+
+if not txt_files:
+    st.error("No scheme files found in the folder!")
+else:
     for file_name in txt_files:
-        path = os.path.join(folder, file_name)
-        with open(path, "r", encoding="utf-8") as f:
-            content = f.read()
-            st.markdown(content, unsafe_allow_html=True)
-                    
-def feature2_page():
+        # Remove file extension for expander title
+        scheme_name = os.path.splitext(file_name)[0].replace("_", " ").title()
+        file_path = os.path.join(folder, file_name)
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+                # Use st.expander to collapse/expand each scheme
+                with st.expander(scheme_name):
+                    st.markdown(content, unsafe_allow_html=True)
+        except FileNotFoundError:
+            st.error(f"File missing: {file_name}")def feature2_page():
     st.title("Feature 2")
     st.write("This is feature 2")
 
