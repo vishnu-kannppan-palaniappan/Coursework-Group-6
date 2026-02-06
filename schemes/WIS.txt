@@ -1,15 +1,15 @@
-##Workfare Income Supplement (WIS)
+## Workfare Income Supplement (WIS)
 
 **Objective**  
 Boost income and retirement savings for lower-wage workers.
 
-**Eligibility**
-- Singapore Citizen
-- Aged **30 and above** (or any age if permanently disabled)
-- **Gross monthly income ≤ $3,000**
-- Total annual income and household situation affect payout tiers
+**Eligibility**  
+- Singapore Citizen  
+- Aged **30 and above** (or any age if permanently disabled)  
+- **Gross monthly income ≤ $3,000**  
+- Total annual income and household situation affect payout tiers  
 - CPF contributions required for cash/CPF top-ups
 
-**Benefits**
-- Up to about **$4,900/year** in combined **cash + CPF top-ups**
+**Benefits**  
+- Up to about **$4,900/year** in combined **cash + CPF top-ups**  
 - Actual amount depends on age and income level
