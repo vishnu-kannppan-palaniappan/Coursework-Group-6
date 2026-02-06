@@ -54,14 +54,14 @@ def home_page():
 def feature1_page():
     st.title("Support Schemes Overview")
 
-folder = "schemes"
-txt_files = sorted([f for f in os.listdir(folder) if f.endswith(".txt")])
+    folder = "schemes"
+    txt_files = sorted([f for f in os.listdir(folder) if f.endswith(".txt")])
 
-for file_name in txt_files:
-    path = os.path.join(folder, file_name)
-    with open(path, "r", encoding="utf-8") as f:
-        content = f.read()
-        st.markdown(content, unsafe_allow_html=True)
+    for file_name in txt_files:
+        path = os.path.join(folder, file_name)
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+            st.markdown(content, unsafe_allow_html=True)
                     
 def feature2_page():
     st.title("Feature 2")
