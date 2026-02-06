@@ -50,17 +50,26 @@ def home_page():
     st.title("Home")
     st.write(f"Welcome, {st.session_state.user}")
 
+
 def feature1_page():
     st.title("Support Schemes Overview")
 
-    file_path = "schemes/silver.txt"
+    folder = "schemes"
+    txt_files = [f for f in os.listdir(folder) if f.endswith(".txt")]
 
-    try:
-        with open(file_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        st.markdown(content)
-    except FileNotFoundError:
-        st.error("silver.txt not found. Folder structure is cooked.")
+    if not txt_files:
+        st.error("No scheme files found in the folder!")
+        return
+
+    for i in range(0, len(txt_files), 3):
+        cols = st.columns(min(3, len(txt_files) - i))
+        for col, file_name in zip(cols, txt_files[i:i+3]):
+            with col:
+                try:
+                    with open(os.path.join(folder, file_name), "r", encoding="utf-8") as f:
+                        st.markdown(f.read())
+                except FileNotFoundError:
+                    st.error(f"File missing: {file_name}")
 
 
 def feature2_page():
